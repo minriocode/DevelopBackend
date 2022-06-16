@@ -32,6 +32,7 @@ namespace TheCafeRio.Web
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -60,6 +61,11 @@ namespace TheCafeRio.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapAreaControllerRoute(
+                name: "Admin",
+                areaName: "Admin",
+                pattern: "Admin/{controller=Dashboard}/{action=Index}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
