@@ -10,7 +10,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <title>Admin</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https:/fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  @RenderSection("css", required: false)
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="~/admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
@@ -27,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a asp-area="" asp-controller="Home" asp-action="index" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -206,7 +207,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item">
                 <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
+                  <p>Reservation</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -221,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Simple Link
+                Slider
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -269,5 +270,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="~/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="~/admin/js/adminlte.min.js"></script>
+@RenderSection("scripts", required: false)
 </body>
 </html>
