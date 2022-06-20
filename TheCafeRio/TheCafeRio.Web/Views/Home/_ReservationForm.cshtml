@@ -1,0 +1,41 @@
+﻿@using TheCafeRio.Web.Enums
+@model TheCafeRio.Web.Models.ReservationUpdateModel
+
+<h4>Reservation</h4>
+<hr />
+<form class="main-reservaton-form" asp-controller="Reservation" asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <div class="row">
+            <div class="d-xs-block left-area upper mb-4 ">
+                <label asp-for="TotalPerson"><i class="bi bi-person-plus"></i></label>
+                <input type="text" name="TotalPerson" id="reservation_person" placeholder="Total Person" autocomplete="off">
+                <span asp-validation-for="TotalPerson" class="text-danger"></span>
+            </div>
+            <div class="d-xs-block right-area upper mb-4 ">
+                <label asp-for="ExpectedDate"><i class="bi bi-calendar2"></i></label>
+                <input type="text" name="ExpectedDate" id="reservation_date" placeholder="Expected Date" class="datepicker datepickerreserve" autocomplete="off">
+                <span asp-validation-for="ExpectedDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="d-xs-block left-area lower mb-4">
+                <label asp-for="ReservationShift"><i class="ti-alarm-clock"></i></label>
+                <select name="ReservationShift" id="reservation_time" asp-items="Html.GetEnumSelectList<ReservationEnum>()">
+                    @*<option value="launch">Launch</option>
+                    <option value="Dinner">Dinner</option>*@
+                </select>
+                <!-- <input type="text" name="reservation_time" id="reservation_time" placeholder="Expected Time" autocomplete="off"> -->
+            </div>
+            <div class="right-area d-xs-block lower mb-4">
+                <label asp-for="ContactNo"><i class="bi bi-telephone-plus"></i></label>
+                <input type="text" name="ContactNo" id="reservation_contact" placeholder="Contact No." autocomplete="off">
+            </div>
+        </div>
+        <div class="row">
+            <div class="booking-button">
+                <input type="submit" value="Book Table" class="simple_btn" />
+            </div>
+        </div>
+    </div>
+</form>

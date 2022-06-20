@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TheCafeRio.Web.Data;
+using TheCafeRio.Web.Repositories;
 
 namespace TheCafeRio.Web
 {
@@ -27,11 +28,12 @@ namespace TheCafeRio.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddTransient<IReservationRepository, ReservationRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddControllersWithViews();
             services.AddRazorPages();
