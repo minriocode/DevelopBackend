@@ -19,10 +19,5 @@ namespace TheCafeRio.Web.Models
         public ReservationEnum ReservationShift { get; set; }
         public List<SelectListItem> Shifts { get; set; }
 
-        public void Create()
-        {
-
-        }
-
     }
 }

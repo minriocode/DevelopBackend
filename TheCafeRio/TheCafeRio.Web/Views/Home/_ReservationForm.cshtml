@@ -1,7 +1,7 @@
 ﻿@using TheCafeRio.Web.Enums
 @model TheCafeRio.Web.Models.ReservationUpdateModel
 
-<h4>Reservation</h4>
+
 <hr />
 <form class="main-reservaton-form" asp-controller="Reservation" asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,7 +23,7 @@
                 <label asp-for="ReservationShift"><i class="ti-alarm-clock"></i></label>
                 <select name="ReservationShift" id="reservation_time" asp-items="Html.GetEnumSelectList<ReservationEnum>()">
                     @*<option value="launch">Launch</option>
-                    <option value="Dinner">Dinner</option>*@
+                        <option value="Dinner">Dinner</option>*@
                 </select>
                 <!-- <input type="text" name="reservation_time" id="reservation_time" placeholder="Expected Time" autocomplete="off"> -->
             </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="row">
             <div class="booking-button">
-                <input type="submit" value="Book Table" class="simple_btn" />
+                <input type="submit" value="Book Table" class="simple_btn swalDefaultSuccess" />
             </div>
         </div>
     </div>

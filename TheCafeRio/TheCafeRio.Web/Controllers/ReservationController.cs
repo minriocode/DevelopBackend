@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TheCafeRio.Web.Entities;
 using TheCafeRio.Web.Enums;
 using TheCafeRio.Web.Models;
@@ -17,9 +18,20 @@ namespace TheCafeRio.Web.Controllers
         {
             _repository = repository;
         }
+
+        //public IActionResult GetReservations()
+        //{
+        //    Request.Form["Draw"].FirstOrDefault();
+        //    Request.Form["Start"].FirstOrDefault();
+        //    Request.Form["Length"].FirstOrDefault();
+        //}
+
         // GET: ReservationController
-        public ActionResult Index()
+        public ActionResult GetAllReservations()
         {
+            var model = new ReservationUpdateModel();
+            var reservations = _repository.GetAll();
+            
             return View();
         }
 
@@ -45,13 +57,12 @@ namespace TheCafeRio.Web.Controllers
                 Text = ReservationEnum.Dinner.ToString()
             });
             return PartialView("_ReservationForm", model);
-            //return View(model);
         }
 
         // POST: ReservationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ReservationUpdateModel model)
+        public void Create(ReservationUpdateModel model)
         {
             if (ModelState.IsValid)
             {
@@ -62,16 +73,17 @@ namespace TheCafeRio.Web.Controllers
                         Id = model.Id,
                         TotalPerson = model.TotalPerson,
                         ContactNo = model.ContactNo,
+
                         ExpectedDate = model.ExpectedDate,
                         ReservationShift = model.ReservationShift
                     });
                 }
                 catch
                 {
-                    return View();
+                    //return View();
                 }
             }
-            return RedirectToAction("Index","Home");
+            //return RedirectToAction("Index", "Home");
         }
 
         // GET: ReservationController/Edit/5
